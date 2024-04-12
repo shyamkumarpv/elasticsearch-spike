@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/v1")
 @RequiredArgsConstructor
@@ -15,8 +17,7 @@ public class ElasticSearchController {
     private final ElasticSearchService elasticSearchService;
 
     @PostMapping("/upload")
-    public String upload(@RequestParam("file") MultipartFile multipartFile) throws Exception {
-        elasticSearchService.upload("resume", multipartFile);
-        return "File upload successfully";
+    public void upload(@RequestParam("file") MultipartFile multipartFile) throws Exception {
+        elasticSearchService.saveJsonFile("json", multipartFile);
     }
 }

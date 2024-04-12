@@ -10,7 +10,7 @@ public class Configuration {
     @Value("${elasticsearch.host:localhost}")
     public String host;
 
-    @Value("${elasticsearch.port:9200}")
+    @Value("${elasticModel.port:9200}")
     public int port;
 
     @Bean(destroyMethod = "close")
